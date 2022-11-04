@@ -11,7 +11,7 @@ export default class Header extends Component {
 
   handleKeyUp = (event)=>{
     const {keyCode, target} = event
-    if (keyCode != 13) return
+    if (keyCode !== 13) return
     if (target.value.trim() === '') {
       alert('empty input')
       return

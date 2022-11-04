@@ -11,13 +11,11 @@ export default class App extends Component {
     {id: '003', name: 'code', done: false},
     {id: '004', name: 'walk', done: true},
   ]}
-
   addTodo = (todoObj)=>{
     const {todos} = this.state
     const newTodos = [todoObj, ...todos]
     this.setState({todos: newTodos})
   }
-
   updTodo = (id, done)=>{
     const {todos} = this.state
     const newTodos = todos.map((todoObj)=>{
@@ -26,7 +24,6 @@ export default class App extends Component {
     })
     this.setState({todos: newTodos})
   }
-
   delTodo = (id)=>{
     const {todos} = this.state
     const newTodos = todos.filter((todoObj)=>{
@@ -34,7 +31,18 @@ export default class App extends Component {
     })
     this.setState({todos: newTodos})
   }
-
+  checkAllTodos = (done)=>{
+    const {todos} = this.state
+    const newTodos = todos.map((todoObj)=>{
+      return {...todoObj, done: done}
+    })
+    this.setState({todos: newTodos})
+  }
+  clearAllDone = ()=>{
+    const {todos} = this.state
+    const newTodos = todos.filter((todoObj)=>!todoObj.done)
+    this.setState({todos: newTodos})
+  }
   render() {
     return (
       <div>
@@ -46,7 +54,11 @@ export default class App extends Component {
               updTodo={this.updTodo}
               delTodo={this.delTodo}
             />
-            <Footer/>
+            <Footer
+              todos={this.state.todos}
+              checkAllTodos={this.checkAllTodos}
+              clearAllDone={this.clearAllDone}
+            />
           </div>
         </div>
       </div>

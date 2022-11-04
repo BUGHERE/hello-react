@@ -23,7 +23,7 @@ export default class Item extends Component {
         >
           <label>
             <input
-              type="checkbox" defaultChecked={done}
+              type="checkbox" checked={done}
               onChange={this.handleCheck(id)}
             />
             <span>{name}</span>
