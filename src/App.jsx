@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Route, Switch} from 'react-router-dom'
+import {Route, Switch, Redirect} from 'react-router-dom'
 import About from './pages/About'
 import Home from './pages/Home'
 import Header from './components/Header'
@@ -16,8 +16,8 @@ export default class App extends Component {
               {/*原生（有刷跳转）*/}
               {/*<a className="list-group-item" href="./about.html">About</a>*/}
               {/*<a className="list-group-item active" href="./home.html">Home</a>*/}
-              <MyNavLink to="/about/a/b">About</MyNavLink>
-              <MyNavLink to="/home/a/b">Home</MyNavLink>
+              <MyNavLink to="/about">About</MyNavLink>
+              <MyNavLink to="/home">Home</MyNavLink>
             </div>
           </div>
           <div className="col-xs-6">
@@ -26,7 +26,8 @@ export default class App extends Component {
                 <Switch>
                   {/*注册路由*/}
                   <Route path="/about" component={About}/>
-                  <Route exact={true} path="/home" component={Home}/>
+                  <Route path="/home" component={Home}/>
+                  <Redirect to="/about"/>
                 </Switch>
               </div>
             </div>
