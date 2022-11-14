@@ -16,8 +16,8 @@ export default class App extends Component {
               {/*原生（有刷跳转）*/}
               {/*<a className="list-group-item" href="./about.html">About</a>*/}
               {/*<a className="list-group-item active" href="./home.html">Home</a>*/}
-              <MyNavLink to="/atguigu/about">About</MyNavLink>
-              <MyNavLink to="/atguigu/home">Home</MyNavLink>
+              <MyNavLink to="/about/a/b">About</MyNavLink>
+              <MyNavLink to="/home/a/b">Home</MyNavLink>
             </div>
           </div>
           <div className="col-xs-6">
@@ -25,8 +25,8 @@ export default class App extends Component {
               <div className="panel-body">
                 <Switch>
                   {/*注册路由*/}
-                  <Route path="/atguigu/about" component={About}/>
-                  <Route path="/atguigu/home" component={Home}/>
+                  <Route path="/about" component={About}/>
+                  <Route exact={true} path="/home" component={Home}/>
                 </Switch>
               </div>
             </div>
