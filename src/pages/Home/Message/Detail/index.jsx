@@ -10,11 +10,14 @@ const data = [
 class Detail extends Component {
   render() {
     // const {id, title} = this.props.match.params
-    const {search} = this.props.location
-    const {id, title} = qs.parse(search.slice(1))
+
+    // const {search} = this.props.location
+    // const {id, title} = qs.parse(search.slice(1))
+
+    const {id, title} = this.props.location.state || {}
     const findRes = data.find((dataObj)=>{
       return dataObj.id === id
-    })
+    }) || {}
     return (
       <ul>
         <li>ID: {id}</li>
