@@ -11,6 +11,25 @@ class Message extends Component {
     ]
   }
 
+  pushJump = (id, title)=>{
+    // this.props.history.push(`/home/message/detail/${id}/${title}`)
+    // this.props.history.push(`/home/message/detail/?id=${id}&title=${title}`)
+    this.props.history.push(`/home/message/detail`, {id, title})
+  }
+
+  replaceJump = (id, title)=>{
+    // this.props.history.replace(`/home/message/detail/${id}/${title}`)
+    // this.props.history.replace(`/home/message/detail/?id=${id}&title=${title}`)
+    this.props.history.replace(`/home/message/detail`, {id, title})
+  }
+
+  forward = ()=>{
+    this.props.history.goForward()
+  }
+  back = ()=>{
+    this.props.history.goBack()
+  }
+
   render() {
     return (
       <div>
@@ -19,20 +38,32 @@ class Message extends Component {
             this.state.messageArr.map((msgObj) => {
               return (
                 <li key={msgObj.id}>
+                  {/*params*/}
                   {/*<Link to={`/home/message/detail/${msgObj.id}/${msgObj.title}`}>{msgObj.title}</Link>*/}
+                  {/*search*/}
                   {/*<Link to={`/home/message/detail/?id=${msgObj.id}&title=${msgObj.title}`}>{msgObj.title}</Link>*/}
+                  {/*state*/}
                   <Link to={{
                     pathname: '/home/message/detail',
                     state: {id: msgObj.id, title: msgObj.title}
                   }}>{msgObj.title}</Link>
+                  &nbsp;
+                  <button onClick={()=>this.pushJump(msgObj.id, msgObj.title)}>push jump</button>
+                  &nbsp;
+                  <button onClick={()=>this.replaceJump(msgObj.id, msgObj.title)}>replace jump</button>
                 </li>
               )
             })
           }
         </ul>
         <hr/>
+        {/*params*/}
         {/*<Route path="/home/message/detail/:id/:title" component={Detail}/>*/}
+        {/*search and state*/}
         <Route path="/home/message/detail" component={Detail}/>
+
+        <button onClick={this.forward}>forward</button>
+        <button onClick={this.back}>back</button>
       </div>
     );
   }

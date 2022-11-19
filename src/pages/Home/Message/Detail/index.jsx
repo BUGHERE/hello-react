@@ -9,11 +9,12 @@ const data = [
 
 class Detail extends Component {
   render() {
+    // params
     // const {id, title} = this.props.match.params
-
+    // search
     // const {search} = this.props.location
     // const {id, title} = qs.parse(search.slice(1))
-
+    // state
     const {id, title} = this.props.location.state || {}
     const findRes = data.find((dataObj)=>{
       return dataObj.id === id
