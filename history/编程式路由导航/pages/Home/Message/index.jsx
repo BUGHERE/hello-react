@@ -23,6 +23,13 @@ class Message extends Component {
     this.props.history.replace(`/home/message/detail`, {id, title})
   }
 
+  forward = ()=>{
+    this.props.history.goForward()
+  }
+  back = ()=>{
+    this.props.history.goBack()
+  }
+
   render() {
     return (
       <div>
@@ -54,6 +61,9 @@ class Message extends Component {
         {/*<Route path="/home/message/detail/:id/:title" component={Detail}/>*/}
         {/*search and state*/}
         <Route path="/home/message/detail" component={Detail}/>
+
+        <button onClick={this.forward}>forward</button>
+        <button onClick={this.back}>back</button>
       </div>
     );
   }
